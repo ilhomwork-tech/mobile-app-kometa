@@ -137,8 +137,8 @@ const Dashboard = () => {
             >
                 <div style={{ position: 'absolute', top: '-10%', right: '-10%', width: '220px', height: '220px', background: 'radial-gradient(circle, var(--secondary-lime) 0%, transparent 70%)', opacity: 0.2, filter: 'blur(50px)' }} />
                 <div style={{ position: 'absolute', bottom: '-5%', left: '10%', width: '120px', height: '120px', background: 'white', opacity: 0.05, borderRadius: '50%', filter: 'blur(30px)' }} />
-                <div style={{ position: 'absolute', top: '20px', right: '32px', width: '60px', opacity: 0.1 }}>
-                    <CreditCard size={60} strokeWidth={1} />
+                <div style={{ position: 'absolute', top: '24px', right: '32px', zIndex: 2 }}>
+                    <img src="/logo.png" alt="Kometa Logo" style={{ height: '40px', borderRadius: '10px', boxShadow: '0 8px 20px rgba(0,0,0,0.2)' }} />
                 </div>
 
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', zIndex: 1 }}>

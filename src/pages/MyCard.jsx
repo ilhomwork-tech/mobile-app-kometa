@@ -82,7 +82,7 @@ const MyCard = () => {
                         <div style={{ position: 'absolute', top: '-20%', right: '-20%', width: '150px', height: '150px', background: 'var(--secondary-lime)', opacity: 0.15, filter: 'blur(40px)', borderRadius: '50%' }} />
 
                         <div style={{ width: '100%', display: 'flex', justifyContent: 'space-between', alignItems: 'center', zIndex: 1 }}>
-                            <div style={{ fontWeight: '900', fontSize: '1.3rem', letterSpacing: '1px', color: 'white' }}>KOMETA</div>
+                            <img src="/logo.png" alt="Kometa Logo" style={{ height: '36px', borderRadius: '8px' }} />
                             <div style={{ background: 'rgba(153, 198, 30, 0.2)', backdropFilter: 'blur(8px)', color: 'var(--secondary-lime)', padding: '6px 14px', borderRadius: '14px', fontSize: '0.8rem', fontWeight: '800', border: '1px solid rgba(153, 198, 30, 0.3)' }}>
                                 {(user?.tier || 'GOLD').toUpperCase()}
                             </div>
