@@ -103,11 +103,11 @@ const Dashboard = () => {
                                 position: 'absolute',
                                 top: '12px',
                                 right: '12px',
-                                width: '10px',
-                                height: '10px',
+                                width: '12px',
+                                height: '12px',
                                 background: '#FF4B4B',
                                 borderRadius: '50%',
-                                border: '2px solid white'
+                                border: `2px solid ${isDarkMode ? '#1a1a1a' : 'white'}`
                             }} />
                         )}
                     </motion.button>
@@ -313,28 +313,61 @@ const Dashboard = () => {
                                 height: '80vh',
                                 background: 'var(--bg-white)',
                                 zIndex: 1001,
-                                borderTopLeftRadius: '40px',
-                                borderTopRightRadius: '40px',
-                                padding: '32px',
+                                borderTopLeftRadius: '32px',
+                                borderTopRightRadius: '32px',
+                                padding: '24px 20px',
                                 display: 'flex',
                                 flexDirection: 'column',
-                                boxShadow: '0 -15px 50px rgba(0,0,0,0.1)',
-                                border: isDarkMode ? '1px solid rgba(255,255,255,0.05)' : 'none'
+                                boxShadow: '0 -20px 60px rgba(0,0,0,0.2)',
+                                border: isDarkMode ? '1px solid rgba(255,255,255,0.05)' : 'none',
+                                overscrollBehavior: 'contain'
                             }}
                         >
-                            <div style={{ width: '40px', height: '5px', background: '#D1D5DB', borderRadius: '10px', margin: '0 auto 24px auto' }} />
-                            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '32px' }}>
-                                <h3 style={{ fontSize: '1.5rem', fontWeight: '800', color: 'var(--text-main)' }}>Notifications</h3>
-                                <div style={{ display: 'flex', gap: '8px' }}>
-                                    <button
-                                        onClick={markAllRead}
-                                        style={{ background: '#F0F9F4', color: 'var(--primary-green)', border: 'none', padding: '10px 16px', borderRadius: '14px', fontSize: '0.9rem', fontWeight: '700', display: 'flex', alignItems: 'center', gap: '6px', cursor: 'pointer' }}
-                                    >
-                                        <CheckCheck size={18} /> Mark as Read
-                                    </button>
+                            <div style={{ width: '36px', height: '4px', background: isDarkMode ? 'rgba(255,255,255,0.1)' : '#E5E7EB', borderRadius: '10px', margin: '0 auto 20px auto', flexShrink: 0 }} />
+
+                            <div style={{
+                                display: 'flex',
+                                justifyContent: 'space-between',
+                                alignItems: 'center',
+                                marginBottom: '24px',
+                                flexShrink: 0
+                            }}>
+                                <h3 style={{ fontSize: '1.4rem', fontWeight: '900', color: 'var(--text-main)', margin: 0 }}>{t('notifications')}</h3>
+                                <div style={{ display: 'flex', gap: '10px' }}>
+                                    {unreadCount > 0 && (
+                                        <button
+                                            onClick={markAllRead}
+                                            style={{
+                                                background: isDarkMode ? 'rgba(153, 198, 30, 0.1)' : '#F0F9F4',
+                                                color: isDarkMode ? 'var(--secondary-lime)' : 'var(--primary-green)',
+                                                border: 'none',
+                                                padding: '8px 14px',
+                                                borderRadius: '12px',
+                                                fontSize: '0.85rem',
+                                                fontWeight: '800',
+                                                display: 'flex',
+                                                alignItems: 'center',
+                                                gap: '6px',
+                                                cursor: 'pointer'
+                                            }}
+                                        >
+                                            <CheckCheck size={16} />
+                                            <span className="hide-on-xs">{t('readAll') || 'Read all'}</span>
+                                        </button>
+                                    )}
                                     <button
                                         onClick={() => setShowNotifications(false)}
-                                        style={{ background: '#F5F5F5', color: 'var(--text-main)', border: 'none', padding: '10px', borderRadius: '14px', cursor: 'pointer' }}
+                                        style={{
+                                            background: isDarkMode ? 'rgba(255,255,255,0.05)' : '#F5F5F5',
+                                            color: 'var(--text-main)',
+                                            border: 'none',
+                                            padding: '10px',
+                                            borderRadius: '12px',
+                                            cursor: 'pointer',
+                                            display: 'flex',
+                                            alignItems: 'center',
+                                            justifyContent: 'center'
+                                        }}
                                     >
                                         <X size={20} />
                                     </button>
@@ -344,19 +377,19 @@ const Dashboard = () => {
                             <div style={{ flex: 1, overflowY: 'auto', display: 'flex', flexDirection: 'column', gap: '16px' }}>
                                 {(notifications || []).map((notif) => (
                                     <div key={notif.id} style={{
-                                        padding: '20px',
-                                        borderRadius: '24px',
+                                        padding: '16px',
+                                        borderRadius: '20px',
                                         background: notif.read ? 'transparent' : (isDarkMode ? 'rgba(153, 198, 30, 0.08)' : '#F9FCFA'),
                                         border: notif.read ? `1px solid ${isDarkMode ? 'rgba(255,255,255,0.05)' : '#F0F0F0'}` : '2px solid var(--secondary-lime)',
                                         position: 'relative',
                                         transition: 'all 0.3s ease'
                                     }}>
-                                        <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '8px' }}>
-                                            <h4 style={{ fontWeight: '800', fontSize: '1.05rem', color: 'var(--text-main)' }}>{notif.title}</h4>
-                                            <span style={{ fontSize: '0.75rem', color: 'var(--text-secondary)', fontWeight: '600' }}>{notif.time}</span>
+                                        <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '6px', alignItems: 'flex-start' }}>
+                                            <h4 style={{ fontWeight: '800', fontSize: '1rem', color: 'var(--text-main)', paddingRight: '20px' }}>{notif.title}</h4>
+                                            <span style={{ fontSize: '0.7rem', color: 'var(--text-secondary)', fontWeight: '600', whiteSpace: 'nowrap' }}>{notif.time}</span>
                                         </div>
-                                        <p style={{ fontSize: '0.9rem', color: 'var(--text-secondary)', lineHeight: '1.5' }}>{notif.body}</p>
-                                        {!notif.read && <div style={{ position: 'absolute', top: '10px', right: '10px', width: '8px', height: '8px', background: 'var(--secondary-lime)', borderRadius: '50%' }} />}
+                                        <p style={{ fontSize: '0.85rem', color: 'var(--text-secondary)', lineHeight: '1.4' }}>{notif.body}</p>
+                                        {!notif.read && <div style={{ position: 'absolute', top: '16px', right: '16px', width: '8px', height: '8px', background: 'var(--secondary-lime)', borderRadius: '50%' }} />}
                                     </div>
                                 ))}
                             </div>
