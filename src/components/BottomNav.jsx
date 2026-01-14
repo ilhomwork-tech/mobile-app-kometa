@@ -16,22 +16,22 @@ const BottomNav = () => {
     return (
         <nav style={{
             position: 'fixed',
-            bottom: '24px',
+            bottom: 0,
             left: '50%',
             transform: 'translateX(-50%)',
-            width: 'calc(100% - 40px)',
-            maxWidth: '400px',
-            height: '72px',
-            background: 'rgba(255, 255, 255, 0.9)',
-            backdropFilter: 'blur(20px)',
-            borderRadius: '24px',
+            width: '100%',
+            maxWidth: '440px',
+            height: '85px',
+            background: 'var(--glass-bg)',
+            backdropFilter: 'var(--glass-blur)',
+            WebkitBackdropFilter: 'var(--glass-blur)',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'space-between',
-            padding: '0 8px',
-            boxShadow: '0 10px 40px rgba(0, 0, 0, 0.1)',
+            padding: '0 20px 15px 20px',
+            boxShadow: '0 -10px 30px rgba(0, 0, 0, 0.05)',
             zIndex: 1000,
-            border: '1px solid rgba(255, 255, 255, 0.5)'
+            borderTop: '1px solid rgba(255, 255, 255, 0.1)'
         }}>
             <LayoutGroup>
                 {tabs.map((tab) => {

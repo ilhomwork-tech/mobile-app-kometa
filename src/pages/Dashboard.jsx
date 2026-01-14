@@ -306,8 +306,10 @@ const Dashboard = () => {
                             style={{
                                 position: 'fixed',
                                 bottom: 0,
-                                left: 0,
-                                right: 0,
+                                left: '50%',
+                                transform: 'translateX(-50%)',
+                                width: '100%',
+                                maxWidth: '440px',
                                 height: '80vh',
                                 background: 'var(--bg-white)',
                                 zIndex: 1001,
@@ -315,7 +317,9 @@ const Dashboard = () => {
                                 borderTopRightRadius: '40px',
                                 padding: '32px',
                                 display: 'flex',
-                                flexDirection: 'column'
+                                flexDirection: 'column',
+                                boxShadow: '0 -15px 50px rgba(0,0,0,0.1)',
+                                border: isDarkMode ? '1px solid rgba(255,255,255,0.05)' : 'none'
                             }}
                         >
                             <div style={{ width: '40px', height: '5px', background: '#D1D5DB', borderRadius: '10px', margin: '0 auto 24px auto' }} />
@@ -342,9 +346,10 @@ const Dashboard = () => {
                                     <div key={notif.id} style={{
                                         padding: '20px',
                                         borderRadius: '24px',
-                                        background: notif.read ? 'transparent' : '#F9FCFA',
-                                        border: notif.read ? '1px solid #F0F0F0' : '2px solid var(--secondary-lime)',
-                                        position: 'relative'
+                                        background: notif.read ? 'transparent' : (isDarkMode ? 'rgba(153, 198, 30, 0.08)' : '#F9FCFA'),
+                                        border: notif.read ? `1px solid ${isDarkMode ? 'rgba(255,255,255,0.05)' : '#F0F0F0'}` : '2px solid var(--secondary-lime)',
+                                        position: 'relative',
+                                        transition: 'all 0.3s ease'
                                     }}>
                                         <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '8px' }}>
                                             <h4 style={{ fontWeight: '800', fontSize: '1.05rem', color: 'var(--text-main)' }}>{notif.title}</h4>
@@ -367,7 +372,18 @@ const Dashboard = () => {
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         exit={{ opacity: 0 }}
-                        style={{ position: 'fixed', top: 0, left: 0, right: 0, bottom: 0, background: 'var(--bg-white)', zIndex: 2000, padding: '32px' }}
+                        style={{
+                            position: 'fixed',
+                            top: 0,
+                            left: '50%',
+                            transform: 'translateX(-50%)',
+                            width: '100%',
+                            maxWidth: '440px',
+                            height: '100vh',
+                            background: 'var(--bg-white)',
+                            zIndex: 2000,
+                            padding: '32px'
+                        }}
                     >
                         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '32px' }}>
                             <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
