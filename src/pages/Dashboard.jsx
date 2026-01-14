@@ -306,8 +306,9 @@ const Dashboard = () => {
                             style={{
                                 position: 'fixed',
                                 bottom: 0,
-                                left: '50%',
-                                transform: 'translateX(-50%)',
+                                left: 0,
+                                right: 0,
+                                margin: '0 auto',
                                 width: '100%',
                                 maxWidth: '440px',
                                 height: '80vh',
@@ -408,8 +409,9 @@ const Dashboard = () => {
                         style={{
                             position: 'fixed',
                             top: 0,
-                            left: '50%',
-                            transform: 'translateX(-50%)',
+                            left: 0,
+                            right: 0,
+                            margin: '0 auto',
                             width: '100%',
                             maxWidth: '440px',
                             height: '100vh',
